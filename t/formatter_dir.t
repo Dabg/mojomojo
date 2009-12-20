@@ -34,30 +34,29 @@ ok(! MojoMojo::Formatter::Dir->checkdir("$dir", $c));
 
 # use to_xhtml to Format
 $ret = MojoMojo::Formatter::Dir->to_xhtml($dir, $exclude, $baseuri, $path);
-like($ret, qr{<div id="dirs"><ul></ul></div>\n<div id="files"><ul></ul></div>\n}s, "Format empty directory in xhtml");
+like($ret, qr{<div id="dirs"><ul><li><a href="/test">..</a></li></ul></div>\n<div id="files"><ul></ul></div>\n}s, "Format empty directory in xhtml");
 
 $dir->mkdir('foo');
 
 $ret = MojoMojo::Formatter::Dir->to_xhtml($dir, $exclude, $baseuri, $path);
-like($ret, qr{<div id="dirs"><ul><li><a href="/test/foo">\[foo\]</a></li></ul></div>\n<div id="files"><ul></ul></div>\n}s,"Just a foo directory in xhtml");
-
+like($ret, qr{<div id="dirs"><ul><li><a href="/test">..</a></li><li><a href="/test/foo">\[foo\]</a></li></ul></div>\n<div id="files"><ul></ul></div>\n}s,"Just a foo directory in xhtml");
 
 $dir->touch('bar.txt', 'bla bla bla');
 $dir->touch('bar.pod', "=head1 NAME\n\ntest");
 
 $ret = MojoMojo::Formatter::Dir->to_xhtml($dir, $exclude, $baseuri, $path);
-like($ret, qr{<div id="dirs"><ul><li><a href="/test/foo">\[foo\]</a></li></ul></div>\n<div id="files"><ul><li><a href="/test/bar_pod">bar_pod</a></li><li><a href="/test/bar_txt">bar_txt</a></li></ul></div>\n}s,"Return listing foo, bar.txt, bar.pod in xhtml");
+like($ret, qr{<div id="dirs"><ul><li><a href="/test">..</a></li><li><a href="/test/foo">\[foo\]</a></li></ul></div>\n<div id="files"><ul><li><a href="/test/bar_pod">bar_pod</a></li><li><a href="/test/bar_txt">bar_txt</a></li></ul></div>\n}s,"Return listing foo, bar.txt, bar.pod in xhtml");
 
 # Dir with 'exclude'
 $dir->mkdir('.baz');
 $content = "<p>{{dir $dir exclude=foo|\.git|.baz}}</p>";
 $ret = MojoMojo::Formatter::Dir->format_content(\$content, $c);
-like($$ret, qr|<div id="dirs"><ul></ul></div>\n<div id="files"><ul><li><a href="http://localhost//bar_pod">bar_pod</a></li><li><a href="http://localhost//bar_txt">bar_txt</a></li></ul></div>\n|s, "Use exclude=foo|\.git|.baz");
-
+like($$ret, qr|<div id="dirs"><ul><li><a href="http://localhost/">..</a></li></ul></div>\n<div id="files"><ul><li><a href="http://localhost//bar_pod">bar_pod</a></li><li><a href="http://localhost//bar_txt">bar_txt</a></li></ul></div>\n|s, "Use exclude=foo|\.git|.baz");
 
 # test checkdir directly
 $ret = MojoMojo::Formatter::Dir->checkdir("/etc/", $c);
 like($ret, qr{Directory '/etc/' must be include in whitelisting ! see Formatter::Dir:whitelisting in mojomojo.conf}s, "checkdir with dir not in whitelist");
+
 
 # use format_content with some errors
 # Same test as before but with format_content
