@@ -87,15 +87,46 @@ sub create_initial_data {
             [ $roles[2]->id, $people[0]->id, 0 ]
         ]
     );
+    my @rights = $schema->populate(
+        'Right',
+        [
+            [ qw/id  name           active/ ],
+            [    1,  'create',       1 ],
+            [    2,  'delete',       1 ],
+            [    3,  'edit',         1 ],
+            [    4,  'view',         1 ],
+            [    5,  'attachment',   1 ],
+            [    6,  'blah',         1 ],
+        ]
+    );
 
     my @path_permissions = $schema->populate(
         'PathPermissions',
         [
-            [ qw/path role apply_to_subpages create_allowed delete_allowed edit_allowed view_allowed attachment_allowed / ],
-            [ '/', $roles[0]->id, qw/ no yes yes yes yes yes yes/ ],
-            [ '/', $roles[0]->id, qw/yes yes yes yes yes yes yes/ ]
+            [ qw/id path role           apply_to_subpages / ],
+            [    1, '/',    $roles[0]->id, 'no' ],
+            [    2, '/',    $roles[0]->id, 'yes'],
         ]
     );
+
+     my @rightstopath = $schema->populate(
+         'RightToPath',
+         [
+             [ qw/ pathperm right allowed/ ], # Admin on page /
+             [     1,       1,    1  ],  # create
+             [     1,       2,    1  ],  # delete
+             [     1,       3,    1  ],  # edit
+             [     1,       4,    1  ],  # view
+             [     1,       5,    1  ],  # attachment
+                                      # Admin on / subpages
+             [     2,       1,    1  ],  # create
+             [     2,       2,    1  ],  # delete
+             [     2,       3,    1  ],  # edit
+             [     2,       4,    1  ],  # view
+             [     2,       5,    1  ],  # attachment
+
+         ]
+     );
 
     my @prefs = $schema->populate(
         'Preference',
