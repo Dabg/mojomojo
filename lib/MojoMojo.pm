@@ -73,6 +73,9 @@ __PACKAGE__->config( authentication => {
 __PACKAGE__->config('default_model' => "DBIC" );
 
 # __PACKAGE__->config( 'permissions' => {
+#     user_class      => 'DBIC::Person',
+#     role_class      => 'DBIC::Roles',
+#     role_field_name => 'name'
 #     admin_role_name => 'Admins',
 #     user_field_name => 'login',
 #     anonymous_allowed => 1,

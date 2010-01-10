@@ -113,6 +113,7 @@ sub init_schema {
         'permissions' => { admin_role_name => 'Admins',
 			   role_members    => 'role_members',
 			   user_field_name => 'login',
+			   user_class      => 'DBIC::Person',
 			   anonymous_allowed => 1,
 			   anonymous_user_name => 'anonymouscoward',
 			   check_permission_on_view => 1,

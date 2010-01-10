@@ -329,12 +329,22 @@ sub user_role_ids {
     ## always use role_id 0 - which is default role and includes everyone.
     my @role_ids = (0);
 
-    if ( ref($user) ) {
+    my $conf = $c->config->{permissions};
 
-      my $relationship_role_members = $c->config->{permissions}->{role_members};
-      push @role_ids, map { $_->role->id } 
-        $user->$relationship_role_members->all;
+    if ( ref("$user") eq 'Catalyst::Authentication::Store::DBIx::Class::User'){
+      my @roles = $user->roles; # Return name of roles
     }
+    # User = MojoMojo::Model::DBIC::Person (not authentified )
+    elsif ( ref("$user") =~ / $conf->{user_class}/ ){
+      @role_ids = map {$_->id} $user->roles;
+    }
+
+    # if ( ref($user) ) {
+
+    #   my $relationship_role_members = $conf->{role_members};
+    #   push @role_ids, map { $_->role->id } 
+    #     $user->$relationship_role_members->all;
+    # }
 
     return @role_ids;
 }
