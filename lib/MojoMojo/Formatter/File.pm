@@ -225,7 +225,7 @@ sub checkfile{
   $dir =~ s|^(\S*[^/])$|$1\/|;
 
   # if $dir is not include in whitelisting
-  if ( ! map ( $dir =~ m|^$_| , @wl) ){
+  if ( ! map ( $dir =~ m|^\Q$_\E| , @wl) ){
     return "Directory '$dir' must be include in whitelisting ! see Formatter::Dir:whitelisting in mojomojo.conf"
   }
 
