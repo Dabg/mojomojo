@@ -110,7 +110,7 @@ sub view : Private {
     $suffix =~ s|^\/||;
     if ( $file !~ s/^$prefix_url// ){
       $c->stash->{message} = $c->loc(
-			 'The requested URL was not found: x',
+                         'The requested URL was not found: x',
                          "$file.$suffix");
 
       $c->stash->{template} = 'message.tt';
