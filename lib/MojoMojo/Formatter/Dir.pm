@@ -132,6 +132,10 @@ sub to_xhtml{
     }
   }
 
+  #-mxh Sort the array for predictable ordering in formatter_dir.t
+  @subdirs = sort @subdirs;
+  @files   = sort @files;
+
   $path =~ s/^\///;
   $path =~ s/\/$//;
   my $url = "${baseuri}/${path}";
@@ -191,7 +195,7 @@ sub checkdir{
   # Add '/' if not exist at the end of whitelist directories
   my @wl =  map { $_ . '/' }            # Add '/'
                   ( map{ /(\S*[^\/])/ } # Delete '/' if exist
-                @whitelist );
+                    @whitelist );
 
   # Add '/' if not exist at the end of dierctory
   $dir =~ s|^(\S*[^/])$|$1\/|;
