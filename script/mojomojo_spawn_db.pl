@@ -1,5 +1,18 @@
 #!/usr/bin/env perl
-# Copyright (c) 2007 Jonathan Rockway <jrockway@cpan.org>
+
+=head1 NAME
+
+mojomojo_spawn_db.pl - hash plain text passwords
+
+=head1 AUTHOR
+
+Jonathan Rockway <jrockway@cpan.org>
+
+=head1 COPYRIGHT
+
+2007 Jonathan Rockway <jrockway@cpan.org>
+
+=cut
 
 BEGIN { $ENV{CATALYST_DEBUG} = 0 }
 use strict;
@@ -10,11 +23,14 @@ use MojoMojo::Schema;
 use Config::JFDI;
 use Getopt::Long;
 
-my ( $dsn, $user, $pass );
+my $jfdi   = Config::JFDI->new(name => "MojoMojo");
+my $config = $jfdi->get;
+
+my ($dsn, $user, $password, $unicode_option);
 
 my $default_user = $ENV{USER} || 'unknown';
 my %opts = (
-    wiki_name       => 'MojoMojo',
+    wiki_name       => $config->{name},
     admin_username  => 'admin',
     admin_password  => 'admin',
     admin_fullname  => $default_user,
@@ -27,7 +43,7 @@ GetOptions(
     'help'             => \$help,
     'dsn:s'            => \$dsn,
     'db-user:s'        => \$user,
-    'db-password:s'    => \$pass,
+    'db-password:s'    => \$password,
     'wiki:s'           => \$opts{wiki_name},
     'admin-username:s' => \$opts{admin_username},
     'admin-password:s' => \$opts{admin_password},
@@ -50,7 +66,7 @@ Accepts the following options:
   --dsn              Default taken from mojomojo.conf
   --db-user          Default taken from mojomojo.conf
   --db-password      Default taken from mojomojo.conf
-  --wiki             Wiki name, default is MojoMojo
+  --wiki             Wiki name, default taken from mojomojo.conf
   --admin-username   Admin username, default is admin
   --admin-password   Admin password, default is admin
   --admin-fullname   Admin name, default is $default_user
@@ -62,33 +78,43 @@ EOF
     exit;
 }
 
-my $jfdi = Config::JFDI->new(name => "MojoMojo");
-my $config = $jfdi->get;
 
 eval {
-    if (!$dsn) {
+    if (!$dsn)
+    {
         if (ref $config->{'Model::DBIC'}->{'connect_info'}) {
-            ($dsn, $user, $pass) =
-                @{ $config->{'Model::DBIC'}->{'connect_info'} };
-        } else {
+            $dsn  = $config->{'Model::DBIC'}->{'connect_info'}->{dsn};
+            $user = $config->{'Model::DBIC'}->{'connect_info'}->{user};
+            $password = $config->{'Model::DBIC'}->{'connect_info'}->{password};
+
+            # Determine database type amongst: SQLite, Pg or MySQL
+            my $db_type = lc($dsn =~ m/^dbi:(\w+)/);
+            my %unicode_connection_for_db = (
+                'sqlite' => { sqlite_unicode    => 1 },
+                'pg'     => { pg_enable_utf8    => 1 },
+                'mysql'  => { mysql_enable_utf8 => 1 },
+            );
+            $unicode_option = $unicode_connection_for_db{$db_type};
+        }
+        else {
             $dsn = $config->{'Model::DBIC'}->{'connect_info'};
         }
-    };
+    }
 };
-if($@){
-    die "Your DSN line in mojomojo.conf doesn't look like a valid DSN.".
-      "  Add one, or pass it on the command line.";
+if ($@) {
+    die "Your DSN line in mojomojo.conf doesn't look like a valid DSN."
+      . "  Add one, or pass it on the command line.";
 }
 die "No valid Data Source Name (DSN).\n" if !$dsn;
 $dsn =~ s/__HOME__/$FindBin::Bin\/\.\./g;
 
-my $schema = MojoMojo::Schema->connect($dsn, $user, $pass) or 
-  die "Failed to connect to database";
-  
-# Check if database is already deployed by  
+my $schema = MojoMojo::Schema->connect($dsn, $user, $password, $unicode_option)
+  or die "Failed to connect to database";
+
+# Check if database is already deployed by
 # examining if the table Person exists and has a record.
-eval {  $schema->resultset('MojoMojo::Schema::Result::Person')->count };
-if (!$@ ) {
+eval { $schema->resultset('MojoMojo::Schema::Result::Person')->count };
+if (!$@) {
     die "You have already deployed your database\n";
 }
 

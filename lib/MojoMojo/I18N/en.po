@@ -3,17 +3,27 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2010-02-04 22:38+0100\n"
+"Last-Translator: Marcus Ramberg <marcus@nordaaker.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8    \n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. ($user->name)
+#: lib/MojoMojo/Controller/User.pm:310
+msgid ""
+"# Home node for x\n"
+"\n"
+"Put whatever you like here."
+msgstr ""
+"# Home node for %1\n"
+"\n"
+"Put whatever you like here."
 
 #: root/base/edithelp/markdown.tt:18
 msgid "**bold** or __bold__"
@@ -107,7 +117,7 @@ msgstr ""
 msgid "Alphabetically sorted list of pages"
 msgstr ""
 
-#: lib/MojoMojo/Controller/User.pm:315
+#: lib/MojoMojo/Controller/User.pm:318
 msgid "An error occourred. Sorry."
 msgstr ""
 
@@ -592,7 +602,7 @@ msgstr ""
 msgid "Headlines for x"
 msgstr "Headlines for %1"
 
-#: lib/MojoMojo/Schema.pm:117
+#: lib/MojoMojo/Schema.pm:122
 msgid "Help"
 msgstr ""
 
@@ -702,7 +712,7 @@ msgstr ""
 msgid "Just like email quoting!"
 msgstr ""
 
-#: root/base/page/edit.tt:73
+#: root/base/page/edit.tt:72
 msgid "Leave the second field blank if you do not want a password"
 msgstr ""
 
@@ -866,7 +876,7 @@ msgstr ""
 msgid "No permissions to x this page"
 msgstr "No permissions to %1 this page"
 
-#: root/base/user/list.tt:14
+#: root/base/user/list.tt:13
 msgid "No recent changes"
 msgstr ""
 
@@ -973,7 +983,8 @@ msgstr ""
 msgid "Password must be between 4 and 14 chars"
 msgstr ""
 
-#:
+#. ($c->stash->{page}->name)
+#: lib/MojoMojo.pm:674
 msgid "Permission Denied to view x"
 msgstr "Permission Denied to view %1"
 
@@ -1152,11 +1163,11 @@ msgstr "Results %1-%2 of %3 found within %4"
 
 #. ([content.created.ymd, content.created.hms, content.creator.name])
 #. ([ content.created.ymd, content.created.hms, content.creator.name ])
-#: root/base/page/print.tt:13 root/base/page/view.tt:41
+#: root/base/page/print.tt:13 root/base/page/view.tt:40
 msgid "Revised on x at x by x"
 msgstr "Revised on %1 at %2 by %3"
 
-#: root/base/page/print.tt:7 root/base/page/view.tt:15 root/base/page/view.tt:41
+#: root/base/page/print.tt:7 root/base/page/view.tt:15 root/base/page/view.tt:40
 msgid "Revision"
 msgstr ""
 
@@ -1277,9 +1288,9 @@ msgstr ""
 msgid "Showing entries x-x of x in x"
 msgstr "Showing entries %1-%2 of %3 in %4"
 
-#. ([pager.entries_on_this_page,pager.first,pager.last,pager.total_entries,c.wikiword(page.path,base)
-#. ([ pager.entries_on_this_page, pager.first, pager.last, pager.total_entries, c.wikiword(page.path, base) ])
-#: root/base/gallery/pager.tt:11
+#. ([pager.entries_on_this_page,pager.first,pager.last,pager.total_entries, link ])
+#. ([ pager.entries_on_this_page, pager.first, pager.last, pager.total_entries, link ])
+#: root/base/gallery/pager.tt:12
 msgid "Showing x (x-x) of x pictures in x"
 msgstr "Showing %1 (%2-%3) of %4 pictures in %5"
 
@@ -1303,7 +1314,7 @@ msgstr ""
 msgid "Site settings"
 msgstr ""
 
-#: lib/MojoMojo/Controller/User.pm:448
+#: lib/MojoMojo/Controller/User.pm:451
 msgid "Some fields are invalid. Please correct them and try again:"
 msgstr ""
 
@@ -1395,7 +1406,7 @@ msgstr ""
 msgid "Textile2 complete reference"
 msgstr ""
 
-#: lib/MojoMojo/Controller/User.pm:362
+#: lib/MojoMojo/Controller/User.pm:365
 msgid "That mail is already in use"
 msgstr ""
 
@@ -1416,8 +1427,9 @@ msgstr ""
 msgid "The following pages will be deleted. This can not be undone"
 msgstr ""
 
+#. ("$file.$suffix")
 #. ('<span class="error_detail">' . $c->stash->{pre_hacked_uri} . '</span>')
-#: lib/MojoMojo/Controller/Root.pm:49
+#: lib/MojoMojo/Controller/Image.pm:114 lib/MojoMojo/Controller/Root.pm:49
 msgid "The requested URL was not found: x"
 msgstr "The requested URL was not found: %1"
 
@@ -1478,7 +1490,7 @@ msgid "User Settings"
 msgstr ""
 
 #. ($login)
-#: lib/MojoMojo/Controller/User.pm:122 lib/MojoMojo/Controller/User.pm:395 lib/MojoMojo/Controller/User.pm:424
+#: lib/MojoMojo/Controller/User.pm:122 lib/MojoMojo/Controller/User.pm:398 lib/MojoMojo/Controller/User.pm:427
 msgid "User not found: x"
 msgstr "User not found: %1"
 
@@ -1532,7 +1544,7 @@ msgid "We've sent you an email with an activation link. Please click on it to ac
 msgstr ""
 
 #. ($user->name)
-#: lib/MojoMojo/Controller/User.pm:341
+#: lib/MojoMojo/Controller/User.pm:344
 msgid "Welcome, x your email is validated. Please log in."
 msgstr "Welcome, %1 your email is validated. Please log in."
 
@@ -1573,7 +1585,7 @@ msgstr ""
 msgid "You do not have permissions to x attachments for this page"
 msgstr "You do not have permissions to %1 attachments for this page"
 
-#: lib/MojoMojo/Controller/User.pm:442
+#: lib/MojoMojo/Controller/User.pm:445
 msgid "You have to fill in all required fields."
 msgstr ""
 
@@ -1637,7 +1649,7 @@ msgstr ""
 msgid "add tag"
 msgstr ""
 
-#: lib/MojoMojo/Schema.pm:160
+#: lib/MojoMojo/Schema.pm:165
 msgid "admin home page"
 msgstr ""
 "# Admin User.\n"
@@ -1686,7 +1698,7 @@ msgstr ""
 msgid "busy spinner"
 msgstr ""
 
-#: root/base/page/search_inline.tt:35 root/base/page/view.tt:42 root/base/tag/recent.tt:26
+#: root/base/page/search_inline.tt:35 root/base/page/view.tt:41 root/base/tag/recent.tt:26
 msgid "by"
 msgstr ""
 
@@ -1718,7 +1730,7 @@ msgstr ""
 msgid "common uses"
 msgstr ""
 
-#: lib/MojoMojo/Controller/User.pm:370
+#: lib/MojoMojo/Controller/User.pm:373
 msgid "confirmation message resent"
 msgstr ""
 
@@ -1758,11 +1770,15 @@ msgstr ""
 msgid "example"
 msgstr ""
 
-#: root/base/comment/post.tt:5 root/base/page/edit.tt:68
+#: lib/MojoMojo/Controller/Image.pm:37
+msgid "file not found."
+msgstr ""
+
+#: root/base/comment/post.tt:5 root/base/page/edit.tt:67
 msgid "forget me"
 msgstr ""
 
-#: root/base/gallery/photo.tt:1
+#: root/base/gallery/pager.tt:11 root/base/gallery/photo.tt:1
 msgid "gallery"
 msgstr ""
 
@@ -1770,7 +1786,7 @@ msgstr ""
 msgid "hello"
 msgstr ""
 
-#: lib/MojoMojo/Schema.pm:156
+#: lib/MojoMojo/Schema.pm:161
 msgid "help message"
 msgstr ""
 "<h1>Help Index</h1>\n"
@@ -1978,12 +1994,16 @@ msgstr ""
 msgid "tags"
 msgstr ""
 
-#: lib/MojoMojo/Controller/User.pm:443
+#: lib/MojoMojo/Controller/User.pm:446
 msgid "the following are missing:"
 msgstr ""
 
 #: root/base/edithelp/markdown.tt:73
 msgid "up to 6 levels of headers"
+msgstr ""
+
+#: root/base/page/permissions.tt:36
+msgid "view"
 msgstr ""
 
 #: root/base/attachments/list.tt:46
@@ -1995,7 +2015,7 @@ msgid "view in your browser"
 msgstr ""
 
 #. ("test")
-#: lib/MojoMojo/Schema.pm:152
+#: lib/MojoMojo/Schema.pm:157
 msgid "welcome message"
 msgstr ""
 "# Welcome to MojoMojo!\n"

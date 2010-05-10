@@ -13,11 +13,11 @@ MojoMojo::Controller::Image - Image controller
 
 =head1 DESCRIPTION
 
-This controller is used to see images in particular URL
+This controller is used to see images in particular url
 
 Formatter::Dir must be configured in mojomojo.conf.
 
-If the URL begins with 'prefix_url', images can be displayed.
+If url begin with 'prefix_url', so images can be displayed.
 
 Images are stored in 'whitelisting' directory.
 
@@ -90,14 +90,15 @@ sub view : Private {
 
     $c->detach('unauthorized', ['view']) if not $c->check_view_permission;
 
-    if ( ! defined $c->config->{'Formatter::Dir'}{prefix_url}
-      || ! defined $c->config->{'Formatter::Dir'}{whitelisting} ) {
-        $c->stash->{message} = "Formatter::Dir is not configured";
-        $c->stash->{template} = 'message.tt';
-        return ( $c->res->status(404) );
+    if ( ! defined $c->config->{'Formatter::Dir'}{prefix_url} ||
+         ! defined $c->config->{'Formatter::Dir'}{whitelisting} ){
+
+      $c->stash->{message} = "Formatter::Dir is not configured";
+      $c->stash->{template} = 'message.tt';
+      return ( $c->res->status(404) );
     }
 
-    # Show image only if the URL starts with prefix_url configured 
+    # Show image only if url start by prefix_url configured 
     # in mojomojo.conf with Formatter::Dir
     my $prefix_url = $c->config->{'Formatter::Dir'}{prefix_url};
     $prefix_url =~ s|\/$||;
@@ -108,9 +109,12 @@ sub view : Private {
     my $suffix =  $c->req->uri->path;
     $suffix =~ s|^\/||;
     if ( $file !~ s/^$prefix_url// ){
-        $c->stash->{message} = $c->loc('The requested URL was not found: x');
-        $c->stash->{template} = 'message.tt';
-        return ( $c->res->status(404) );
+      $c->stash->{message} = $c->loc(
+                         'The requested URL was not found: x',
+                         "$file.$suffix");
+
+      $c->stash->{template} = 'message.tt';
+      return ( $c->res->status(404) );
     }
 
 

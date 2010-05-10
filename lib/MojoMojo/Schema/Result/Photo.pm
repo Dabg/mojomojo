@@ -68,7 +68,7 @@ __PACKAGE__->has_one( "attachment", "MojoMojo::Schema::Result::Attachment" );
 
 =head1 NAME
 
-MojoMojo::Schema::Result::Photo
+MojoMojo::Schema::Result::Photo - store photos
 
 =head1 METHODS
 
@@ -127,9 +127,13 @@ Return previous image when browsing by the given tag.
 
 sub prev_by_tag {
     my ( $self, $tag ) = @_;
-    return $self->retrieve_previous(
-        'tags.tag' => $tag,
-        { order_by => 'taken DESC' }
+    return $self->result_source->resultset->search(
+        { 'me.id' => { '>', $self->id },
+          'tags.tag' => $tag 
+        },
+        { order_by => 'taken',
+          join => [qw/tags/],rows=>1
+        }
     )->next;
 }
 
@@ -141,9 +145,12 @@ Return the next image when browsing by the given tag.
 
 sub next_by_tag {
     my ( $self, $tag ) = @_;
-    return $self->result_source->resultset - _search(
-        { id => { '>', $self->id }, 'tags.tag' => $tag },
-        { order_by => 'taken DESC', join => [qw/tags/], rows => 1 }
+    return $self->result_source->resultset->search(
+        { 'me.id' => { '<', $self->id },
+          'tags.tag' => $tag
+        },
+        { order_by => 'taken DESC',
+          join => [qw/tags/], rows => 1 }
     )->next;
 }
 

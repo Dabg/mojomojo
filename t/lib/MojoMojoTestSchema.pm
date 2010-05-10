@@ -109,9 +109,6 @@ sub init_schema {
         allowed => {
             src => [qw(youtube.com youporn.org iusethis.com)] ,
         },
-        'View::Email' => { 
-            sender => { mailer => 'Test' } 
-        },
         'permissions' => { 
             admin_role_name          => 'Admins',
             role_members             => 'role_members',
@@ -128,6 +125,7 @@ sub init_schema {
             attachment_allowed       => 0,
         },
         'View::Email' => { sender => { mailer => 'Test' } },
+        'system_mail' => 'admin@localhost',
     };
     YAML::DumpFile('t/var/mojomojo.yml', $config);
 

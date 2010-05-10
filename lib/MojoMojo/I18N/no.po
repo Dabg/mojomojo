@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MojoMojo 0.999026\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2009-08-17 09:07+0100\n"
+"PO-Revision-Date: 2010-02-04 22:34+0100\n"
 "Last-Translator: Marcus Ramberg <marcus@nordaaker.com>\n"
 "Language-Team: Norway <marcus@nordaaker.com>\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +15,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Norwegian Bokmal\n"
 "X-Poedit-Country: NORWAY\n"
+
+#:
+msgid ""
+"# Home node for [x]\n"
+"\n"
+"Put whatever you like here."
+msgstr "# Hjemmenoden til %1Skriv hva du vil her. Trykk redigeringslinken for å endre."
+
+#. ($user->name)
+#: lib/MojoMojo/Controller/User.pm:310
+msgid ""
+"# Home node for x\n"
+"\n"
+"Put whatever you like here."
+msgstr ""
 
 #:
 msgid "(Private)"
@@ -144,7 +159,7 @@ msgstr "Alfabetisk sortert liste over sider"
 msgid "Also try h2,h3 and so on"
 msgstr "Prøv også h2, h3 osv."
 
-#: lib/MojoMojo/Controller/User.pm:315
+#: lib/MojoMojo/Controller/User.pm:318
 msgid "An error occourred. Sorry."
 msgstr "Unnskyld. En feil har oppstått."
 
@@ -182,7 +197,7 @@ msgstr "Anonym bruker (tomt for å skru av)"
 
 #: lib/MojoMojo/Controller/PageAdmin.pm:184
 msgid "Anonymous edit disabled"
-msgstr ""
+msgstr "Må være logget inn for å endre"
 
 #: root/base/edithelp.tt:4
 msgid "Any phrase surrounded by double brackets or parentheses is a wiki word (camel-case wiki words are not supported for good reasons, one being that some languages don't have the concept of case)."
@@ -194,7 +209,7 @@ msgstr "Blender"
 
 #: root/base/page/delete.tt:5
 msgid "Are you sure you want to delete"
-msgstr ""
+msgstr "Er du sikker på at du vil slette"
 
 #: root/base/edithelp/markdown.tt:184
 msgid ""
@@ -202,6 +217,9 @@ msgid ""
 "        ...later in the document...<br/>\n"
 "        &#91;^footnote1&#93;: Conway, Damian - Perl Best Practices, p. 117"
 msgstr ""
+"As detailed in the book&#91;^footnote1&#93;, we will now show that...<br/>\n"
+"        ...later in the document...<br/>\n"
+"        &#91;^footnote1&#93;: Conway, Damian - Perl Best Practices, p. 117"
 
 #: root/forms/admin/settings.yml:99
 msgid "Attachment allowed by default"
@@ -217,11 +235,11 @@ msgstr "Vedlegg"
 
 #: root/base/page/attachments.tt:1
 msgid "Attachments for"
-msgstr ""
+msgstr "Vedlegg for"
 
 #: root/base/page/info.tt:63
 msgid "Attachments size"
-msgstr ""
+msgstr "Størrelse på vedlegg"
 
 #: root/base/navbar.tt:12
 msgid "Authors"
@@ -395,7 +413,7 @@ msgstr "Kunne ikke opprette vedlegg fra %1"
 #. ($url)
 #: lib/MojoMojo/Formatter/RSS.pm:77
 msgid "Could not parse feed x"
-msgstr ""
+msgstr "Kunne ikke tolke strømmen %1"
 
 #: lib/MojoMojo/Controller/User.pm:186
 msgid "Could not recover password"
@@ -408,7 +426,7 @@ msgstr "Kunne ikke hente"
 #. ($url)
 #: lib/MojoMojo/Formatter/Include.pm:80 lib/MojoMojo/Formatter/RSS.pm:74
 msgid "Could not retrieve x"
-msgstr ""
+msgstr "Kunne ikke hente %1"
 
 #:
 msgid "Create"
@@ -461,7 +479,7 @@ msgstr "Registreringsdato"
 #. (page.path)
 #: root/base/page/delete.tt:1
 msgid "Delete"
-msgstr ""
+msgstr "Slett"
 
 #: root/forms/admin/settings.yml:84
 msgid "Delete allowed by default"
@@ -469,11 +487,11 @@ msgstr "Sletting tillatt som standard"
 
 #: root/base/page/bottomnav.tt:15
 msgid "Delete page"
-msgstr ""
+msgstr "Slett side"
 
 #: root/base/page/deleted.tt:1 root/base/page/deleted.tt:4
 msgid "Deleted"
-msgstr ""
+msgstr "Slettet"
 
 #:
 msgid "Deleted Text"
@@ -497,7 +515,7 @@ msgstr "Skru av søk"
 
 #: root/base/navbar.tt:14
 msgid "Download a ZIP of this page and its subpages"
-msgstr ""
+msgstr "Last ned en Zip-fil av siden og dens undersider"
 
 #: root/base/page/list.tt:52
 msgid "Download a zip with all the pages in this path"
@@ -594,7 +612,7 @@ msgstr "Numerert liste"
 
 #: root/base/message.tt:1
 msgid "Error"
-msgstr ""
+msgstr "Feil"
 
 #: lib/MojoMojo/Controller/User.pm:205
 msgid "Error occurred while emailing you your new password."
@@ -602,7 +620,7 @@ msgstr "En feil oppsto under utsending av ditt nye passord."
 
 #: root/base/edithelp.tt:40
 msgid "Examples"
-msgstr ""
+msgstr "Eksempler"
 
 #: root/base/gallery/photo_info.tt:1
 msgid "Exif Data"
@@ -638,7 +656,7 @@ msgstr "Fyll ut epostadressen du ønsker å bruke her"
 
 #: root/base/gallery/photo_info.tt:8
 msgid "Flash"
-msgstr ""
+msgstr "Flash"
 
 #: root/base/edithelp/markdown.tt:181
 msgid "Footnotes"
@@ -745,7 +763,7 @@ msgstr "Overskrifter"
 msgid "Headlines for x"
 msgstr "Overskrifter for %1"
 
-#: lib/MojoMojo/Schema.pm:117
+#: lib/MojoMojo/Schema.pm:122
 msgid "Help"
 msgstr "Hjelp"
 
@@ -907,7 +925,7 @@ msgstr "Senere i dokumentet"
 msgid "Leave second blank if you do not want a password"
 msgstr "La andre være tom hvis du ikke vil ha passord"
 
-#: root/base/page/edit.tt:73
+#: root/base/page/edit.tt:72
 msgid "Leave the second field blank if you do not want a password"
 msgstr "La det andre feltet forbli tomt hvis du ikke ønsker deg et passord."
 
@@ -1006,7 +1024,7 @@ msgstr "Tips for Markdown-formattering"
 
 #: root/base/edithelp/markdown.tt:1
 msgid "Markdown help"
-msgstr ""
+msgstr "Hjelp for Markdown"
 
 #:
 msgid "Markdown reference"
@@ -1109,9 +1127,9 @@ msgstr "Har ikke rettigheter til å redigere denne siden"
 #. ($operation || $c->loc('update')
 #: lib/MojoMojo/Controller/PageAdmin.pm:38
 msgid "No permissions to x this page"
-msgstr ""
+msgstr "Ingen rettigheter til å %1 denne siden"
 
-#: root/base/user/list.tt:14
+#: root/base/user/list.tt:13
 msgid "No recent changes"
 msgstr "Ingen nylige endringer"
 
@@ -1254,7 +1272,8 @@ msgstr "Passordet ble ikke gjentatt korrekt"
 msgid "Password must be between 4 and 14 chars"
 msgstr "Passordet må være mellom 4 og 4 tegn"
 
-#:
+#. ($c->stash->{page}->name)
+#: lib/MojoMojo.pm:674
 msgid "Permission Denied to view x"
 msgstr "Du har ikke rettigheter til å se %1"
 
@@ -1265,7 +1284,7 @@ msgstr "Du har ingen rettigheter til %1 %2"
 #. ([ $loc_permtocheck, $name ])
 #: lib/MojoMojo/Controller/PageAdmin.pm:179
 msgid "Permission denied to x x"
-msgstr ""
+msgstr "Ingen rettigheter til %1 %2"
 
 #: root/base/page/editbar.tt:11 root/base/page/editbar.tt:15 root/base/page/editbar.tt:5
 msgid "Permissions"
@@ -1281,7 +1300,7 @@ msgstr "Fotoalbum"
 
 #: lib/MojoMojo/Controller/Gallery.pm:31
 msgid "Photo not found"
-msgstr ""
+msgstr "Bildet ble ikke funnet"
 
 #: root/base/page/info.tt:69
 msgid "Photos"
@@ -1469,11 +1488,11 @@ msgstr "Resultater %1-%2 av %3 funnet innen %4"
 
 #. ([content.created.ymd, content.created.hms, content.creator.name])
 #. ([ content.created.ymd, content.created.hms, content.creator.name ])
-#: root/base/page/print.tt:13 root/base/page/view.tt:41
+#: root/base/page/print.tt:13 root/base/page/view.tt:40
 msgid "Revised on x at x by x"
 msgstr "Revidert den %1 klokken %2 av %3"
 
-#: root/base/page/print.tt:7 root/base/page/view.tt:15 root/base/page/view.tt:41
+#: root/base/page/print.tt:7 root/base/page/view.tt:15 root/base/page/view.tt:40
 msgid "Revision"
 msgstr "Revisjon"
 
@@ -1602,9 +1621,9 @@ msgstr "Viser endringer mot forrige revisjon."
 msgid "Showing entries x-x of x in x"
 msgstr "Viser %1-%2 oppføringer av totalt %3 i %4"
 
-#. ([pager.entries_on_this_page,pager.first,pager.last,pager.total_entries,c.wikiword(page.path,base)
-#. ([ pager.entries_on_this_page, pager.first, pager.last, pager.total_entries, c.wikiword(page.path, base) ])
-#: root/base/gallery/pager.tt:11
+#. ([pager.entries_on_this_page,pager.first,pager.last,pager.total_entries, link ])
+#. ([ pager.entries_on_this_page, pager.first, pager.last, pager.total_entries, link ])
+#: root/base/gallery/pager.tt:12
 msgid "Showing x (x-x) of x pictures in x"
 msgstr "Viser %1 (%2-%3) av %4 bilder i %5"
 
@@ -1632,7 +1651,7 @@ msgstr "Systeminstillinger"
 msgid "Smaller"
 msgstr "Mindre"
 
-#: lib/MojoMojo/Controller/User.pm:448
+#: lib/MojoMojo/Controller/User.pm:451
 msgid "Some fields are invalid. Please correct them and try again:"
 msgstr "Formen var ikke riktig fylt ut. Rett feilene og prøv igjen:"
 
@@ -1642,7 +1661,7 @@ msgstr "Noen har endret siden mens du redigerte. Dine endringer har blitt slått
 
 #: root/base/page/delete.tt:8
 msgid "Sorry"
-msgstr ""
+msgstr "Beklager"
 
 #: root/base/edithelp/markdown.tt:171
 msgid ""
@@ -1663,19 +1682,19 @@ msgstr "Firkant"
 
 #: root/base/message.tt:4
 msgid "Stop"
-msgstr ""
+msgstr "Stopp"
 
 #: root/base/edithelp/markdown.tt:60 root/base/edithelp/markdown.tt:61 root/base/edithelp/markdown.tt:65 root/base/edithelp/markdown.tt:66 root/base/edithelp/markdown.tt:67
 msgid "Sub Header"
-msgstr ""
+msgstr "Undertittel"
 
 #: root/base/page/list.tt:45
 msgid "Sub Page Tools"
-msgstr ""
+msgstr "Verktøy for undertittel"
 
 #: root/base/edithelp/markdown.tt:71 root/base/edithelp/markdown.tt:75 root/base/edithelp/markdown.tt:76
 msgid "Sub Sub ... Header"
-msgstr ""
+msgstr "Under-under ... Tittel"
 
 #: root/base/navbar.tt:45
 msgid "Sub pages"
@@ -1719,7 +1738,7 @@ msgstr "Tabell"
 
 #: lib/MojoMojo/Controller/Gallery.pm:67
 msgid "Tag not found"
-msgstr ""
+msgstr "Nøkkelord fantes ikke"
 
 #: root/base/navbar.tt:11 root/base/page/list.tt:49 root/base/page/list.tt:7 root/base/page/recent.tt:18 root/base/tag/recent.tt:7
 msgid "Tags"
@@ -1748,17 +1767,17 @@ msgstr "Formatteringstips for Textile"
 
 #: root/base/edithelp/textile.tt:1
 msgid "Textile help"
-msgstr ""
+msgstr "Hjelp for Textile"
 
 #: root/base/edithelp/textile.tt:2
 msgid "Textile2 complete reference"
-msgstr ""
+msgstr "Referanse til Textile2"
 
 #:
 msgid "Textile2 reference"
 msgstr "Hjelp for Textile"
 
-#: lib/MojoMojo/Controller/User.pm:362
+#: lib/MojoMojo/Controller/User.pm:365
 msgid "That mail is already in use"
 msgstr "Det finnes allerede en bruker med den epostadressen"
 
@@ -1773,22 +1792,23 @@ msgstr "Eposten ble sendt til %1."
 
 #: root/base/page/deleted.tt:6
 msgid "The following pages have been deleted"
-msgstr ""
+msgstr "Sidene har blitt slettet."
 
 #: root/base/page/suggest.tt:4
 msgid "The following pages in the requested path do not exist:"
-msgstr ""
+msgstr "De følgende sidene som ble etterspurt finnes ikke:"
 
 #: root/base/page/delete.tt:6
 msgid "The following pages will be deleted. This can not be undone"
-msgstr ""
+msgstr "De følgende sidene vil bli slettet. Kan ikke angres."
 
 #:
 msgid "The requested URL (x) was not found"
 msgstr "Den etterspurte adressen (%1) finnes ikke"
 
+#. ("$file.$suffix")
 #. ('<span class="error_detail">' . $c->stash->{pre_hacked_uri} . '</span>')
-#: lib/MojoMojo/Controller/Root.pm:49
+#: lib/MojoMojo/Controller/Image.pm:114 lib/MojoMojo/Controller/Root.pm:49
 msgid "The requested URL was not found: x"
 msgstr "Den ønskede URLen kunne ikke finnes: %1"
 
@@ -1873,7 +1893,7 @@ msgid "User not found!"
 msgstr "Brukeren kunne ikke finnes"
 
 #. ($login)
-#: lib/MojoMojo/Controller/User.pm:122 lib/MojoMojo/Controller/User.pm:395 lib/MojoMojo/Controller/User.pm:424
+#: lib/MojoMojo/Controller/User.pm:122 lib/MojoMojo/Controller/User.pm:398 lib/MojoMojo/Controller/User.pm:427
 msgid "User not found: x"
 msgstr "Brukernav %1 finnes ikke på systemet."
 
@@ -1900,7 +1920,7 @@ msgstr "Validering"
 
 #: root/base/page/info.tt:19
 msgid "Version"
-msgstr ""
+msgstr "Versjon"
 
 #: root/base/page/recent.tt:63
 msgid "View Diff"
@@ -1931,7 +1951,7 @@ msgid "We've sent you an email with an activation link. Please click on it to ac
 msgstr "Vi har sendt deg en epost med aktiveringslenke. Vennligst følg lenken for å aktivere din konto!"
 
 #. ($user->name)
-#: lib/MojoMojo/Controller/User.pm:341
+#: lib/MojoMojo/Controller/User.pm:344
 msgid "Welcome, x your email is validated. Please log in."
 msgstr "Velkommen, %1, din e-post er godkjent. Vennligst logg inn."
 
@@ -1969,7 +1989,7 @@ msgstr "Du kan eksportere alle sidene i denne wikien som en zip fil enten som HT
 
 #: root/base/message.tt:9
 msgid "You can go to the"
-msgstr ""
+msgstr "Du kan gå til"
 
 #: root/base/feeds.tt:4
 msgid "You can subscribe to this wiki by RSS and get either just the headlines of the pages that change or the entire page."
@@ -1982,9 +2002,9 @@ msgstr "Du har ikke rettigheter til å endre vedlegg for denne siden"
 #. ($operation)
 #: lib/MojoMojo/Controller/Attachment.pm:45
 msgid "You do not have permissions to x attachments for this page"
-msgstr ""
+msgstr "Du har inge rettigheter til å %1 vedlegg for denne siden"
 
-#: lib/MojoMojo/Controller/User.pm:442
+#: lib/MojoMojo/Controller/User.pm:445
 msgid "You have to fill in all required fields."
 msgstr "Du må fylle inn alle de påkrevde feltene."
 
@@ -1994,7 +2014,7 @@ msgstr "Du må logge inn for å legge igjen en kommentar."
 
 #: root/base/page/delete.tt:9
 msgid "You lack permissions to delete this page (or any of the sub pages)."
-msgstr ""
+msgstr "Du har ikke rettigheter til å slette denne siden (eller noen av undersidene)."
 
 #: lib/MojoMojo/Formatter/YouTube.pm:58
 msgid "YouTube Video"
@@ -2029,7 +2049,7 @@ msgstr "[C++]], [[Skal vi leke mer?]] ((lett å skrive))"
 
 #: root/base/edithelp.tt:7
 msgid "[[C++]], [[Let's rock!]] ((easy to type))"
-msgstr ""
+msgstr "[[C++]],[[Slå'rei løs]]"
 
 #. ($c->pref('name')
 #: lib/MojoMojo/Controller/User.pm:307
@@ -2052,7 +2072,7 @@ msgstr "legg til en kommentar"
 msgid "add tag"
 msgstr "legg til nøkkelord"
 
-#: lib/MojoMojo/Schema.pm:160
+#: lib/MojoMojo/Schema.pm:165
 msgid "admin home page"
 msgstr ""
 "# Admin User.\n"
@@ -2113,7 +2133,7 @@ msgstr "uthevet"
 msgid "busy spinner"
 msgstr "Jobber"
 
-#: root/base/page/search_inline.tt:35 root/base/page/view.tt:42 root/base/tag/recent.tt:26
+#: root/base/page/search_inline.tt:35 root/base/page/view.tt:41 root/base/tag/recent.tt:26
 msgid "by"
 msgstr "laget av"
 
@@ -2157,7 +2177,7 @@ msgstr "vanlige bruksområder"
 msgid "configuration"
 msgstr "konfigurasjon"
 
-#: lib/MojoMojo/Controller/User.pm:370
+#: lib/MojoMojo/Controller/User.pm:373
 msgid "confirmation message resent"
 msgstr "bekreftelsesmelding ble sendt på nytt"
 
@@ -2213,11 +2233,15 @@ msgstr "alle sidene"
 msgid "example"
 msgstr "eksempel"
 
-#: root/base/comment/post.tt:5 root/base/page/edit.tt:68
+#: lib/MojoMojo/Controller/Image.pm:37
+msgid "file not found."
+msgstr "kunne ikke finne filen"
+
+#: root/base/comment/post.tt:5 root/base/page/edit.tt:67
 msgid "forget me"
 msgstr "glem meg"
 
-#: root/base/gallery/photo.tt:1
+#: root/base/gallery/pager.tt:11 root/base/gallery/photo.tt:1
 msgid "gallery"
 msgstr "galleri"
 
@@ -2225,7 +2249,7 @@ msgstr "galleri"
 msgid "hello"
 msgstr "hallo"
 
-#: lib/MojoMojo/Schema.pm:156
+#: lib/MojoMojo/Schema.pm:161
 msgid "help message"
 msgstr ""
 "# Help Index.\n"
@@ -2240,15 +2264,15 @@ msgstr ""
 
 #: root/base/message.tt:9
 msgid "home page"
-msgstr ""
+msgstr "hjemmeside"
 
 #: root/base/edithelp/markdown.tt:43
 msgid "hover over the link to see the title"
-msgstr ""
+msgstr "Hold over lenken for å se tittelen"
 
 #: root/base/edithelp/markdown.tt:34 root/base/edithelp/markdown.tt:41
 msgid "http://example.com"
-msgstr ""
+msgstr "http://eksempel.no"
 
 #: root/base/edithelp/markdown.tt:32 root/base/edithelp/markdown.tt:39
 msgid "http://example.com/"
@@ -2296,11 +2320,11 @@ msgstr "sett inn lenke"
 
 #: root/base/attachments/list.tt:59
 msgid "insert thumbnail"
-msgstr ""
+msgstr "Sett inn lite bilde."
 
 #: root/base/edithelp/markdown.tt:33 root/base/edithelp/markdown.tt:40
 msgid "is formatted as:"
-msgstr ""
+msgstr "er formattert som:"
 
 #: lib/MojoMojo/Formatter/YouTube.pm:71
 msgid "is not a valid link to youtube video"
@@ -2332,7 +2356,7 @@ msgstr "venstre-justert paragraf"
 
 #: root/base/edithelp.tt:40
 msgid "level"
-msgstr ""
+msgstr "nivå"
 
 #: root/base/edithelp/textile.tt:37 root/base/edithelp/textile.tt:39
 msgid "linkname"
@@ -2396,7 +2420,7 @@ msgstr "på"
 
 #: root/base/edithelp/markdown.tt:68
 msgid "optionally, you can add the same number of trailing # marks"
-msgstr ""
+msgstr "eventuellt kan du legge til samme antall etterfølgende #-tegn"
 
 #: root/base/edithelp/markdown.tt:149 root/base/user/login.tt:11
 msgid "or"
@@ -2404,7 +2428,7 @@ msgstr "eller"
 
 #: root/base/message.tt:10
 msgid "or you can try to"
-msgstr ""
+msgstr "eller du kan prøve å"
 
 #: root/base/page/info.tt:58 root/base/page/info.tt:61
 msgid "pages"
@@ -2469,7 +2493,7 @@ msgstr "fjern"
 
 #: lib/MojoMojo/Controller/PageAdmin.pm:422
 msgid "rename via non-POST method"
-msgstr ""
+msgstr "navneendring uten POST-forespørsel"
 
 #: root/base/page/bottomnav.tt:25
 msgid "revision"
@@ -2485,7 +2509,7 @@ msgstr "roller"
 
 #: lib/MojoMojo/Controller/PageAdmin.pm:390
 msgid "rollback"
-msgstr ""
+msgstr "rull tilbake"
 
 #:
 msgid "shrinked head"
@@ -2515,7 +2539,7 @@ msgstr "innhold"
 msgid "tags"
 msgstr "nøkkelord"
 
-#: lib/MojoMojo/Controller/User.pm:443
+#: lib/MojoMojo/Controller/User.pm:446
 msgid "the following are missing:"
 msgstr "følgende mangler:"
 
@@ -2529,7 +2553,7 @@ msgstr "toc"
 
 #: root/base/edithelp/markdown.tt:73
 msgid "up to 6 levels of headers"
-msgstr ""
+msgstr "opp til 6 nivåer med overskrifter"
 
 #:
 msgid "url inside paranthesis"
@@ -2539,17 +2563,17 @@ msgstr "url mellom parantesene"
 msgid "users"
 msgstr "brukere"
 
-#:
+#: root/base/page/permissions.tt:36
 msgid "view"
 msgstr "vis"
 
 #: root/base/attachments/list.tt:46
 msgid "view full size"
-msgstr ""
+msgstr "vis full størrelse"
 
 #: root/base/attachments/list.tt:50
 msgid "view in your browser"
-msgstr ""
+msgstr "vis i din nettleser"
 
 # "# Welcome to MojoMojo!\n"
 # "\n"
@@ -2562,7 +2586,7 @@ msgstr ""
 # "\n"
 # "Check out our [[Help]] section."
 #. ("test")
-#: lib/MojoMojo/Schema.pm:152
+#: lib/MojoMojo/Schema.pm:157
 msgid "welcome message"
 msgstr "# Velkommen til MojoMojo!Dette er forsiden din. For å begynne å bruke wikien din, logg deg inn medbrukernavn admin/passord admin. Du vil da ha mulighet til å endre instillinger fra bunn-menyen  Hvis du vil teste litt kan du lage en [[Ny Side]] eller redigere denne ved å velge 'Rediger' lenken.## Trenger du hjelp?Sjekk ut [[Hjelp|Help]]-siden."
 
@@ -2577,7 +2601,7 @@ msgstr "%1 treff"
 #. ($url)
 #: lib/MojoMojo/Formatter/Include.pm:71 lib/MojoMojo/Formatter/RSS.pm:71
 msgid "x is not a valid URL"
-msgstr ""
+msgstr "%1 er ikke en gyldig URL."
 
 #. (page.content.max_version - page.content_version)
 #. (page.content.max_version - rev)

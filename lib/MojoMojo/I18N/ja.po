@@ -15,6 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8    \n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. ($user->name)
+#: lib/MojoMojo/Controller/User.pm:310
+msgid ""
+"# Home node for x\n"
+"\n"
+"Put whatever you like here."
+msgstr ""
+
 #:
 msgid "(Private)"
 msgstr "(非公表)"
@@ -115,7 +123,7 @@ msgstr ""
 msgid "Alphabetically sorted list of pages"
 msgstr ""
 
-#: lib/MojoMojo/Controller/User.pm:315
+#: lib/MojoMojo/Controller/User.pm:318
 msgid "An error occourred. Sorry."
 msgstr ""
 
@@ -620,7 +628,7 @@ msgstr "ヘッドライン"
 msgid "Headlines for x"
 msgstr "Headlines for %1"
 
-#: lib/MojoMojo/Schema.pm:117
+#: lib/MojoMojo/Schema.pm:122
 msgid "Help"
 msgstr ""
 
@@ -734,7 +742,7 @@ msgstr ""
 msgid "Last changes"
 msgstr "更新履歴"
 
-#: root/base/page/edit.tt:73
+#: root/base/page/edit.tt:72
 msgid "Leave the second field blank if you do not want a password"
 msgstr ""
 
@@ -902,7 +910,7 @@ msgstr ""
 msgid "No permissions to x this page"
 msgstr ""
 
-#: root/base/user/list.tt:14
+#: root/base/user/list.tt:13
 msgid "No recent changes"
 msgstr "最近の更新はありません"
 
@@ -1013,7 +1021,8 @@ msgstr "パスワードが一致しませんでした"
 msgid "Password must be between 4 and 14 chars"
 msgstr "パスワードは4文字から14文字である必要があります"
 
-#:
+#. ($c->stash->{page}->name)
+#: lib/MojoMojo.pm:674
 msgid "Permission Denied to view x"
 msgstr "「%1」の閲覧権限がありません"
 
@@ -1212,11 +1221,11 @@ msgstr "Results %1-%2 of %3 found within %4"
 
 #. ([content.created.ymd, content.created.hms, content.creator.name])
 #. ([ content.created.ymd, content.created.hms, content.creator.name ])
-#: root/base/page/print.tt:13 root/base/page/view.tt:41
+#: root/base/page/print.tt:13 root/base/page/view.tt:40
 msgid "Revised on x at x by x"
 msgstr "Revised on %1 at %2 by %3"
 
-#: root/base/page/print.tt:7 root/base/page/view.tt:15 root/base/page/view.tt:41
+#: root/base/page/print.tt:7 root/base/page/view.tt:15 root/base/page/view.tt:40
 msgid "Revision"
 msgstr "最終更新"
 
@@ -1337,9 +1346,9 @@ msgstr ""
 msgid "Showing entries x-x of x in x"
 msgstr "「%4」の %1-%2 ページ中 %3 ページ目"
 
-#. ([pager.entries_on_this_page,pager.first,pager.last,pager.total_entries,c.wikiword(page.path,base)
-#. ([ pager.entries_on_this_page, pager.first, pager.last, pager.total_entries, c.wikiword(page.path, base) ])
-#: root/base/gallery/pager.tt:11
+#. ([pager.entries_on_this_page,pager.first,pager.last,pager.total_entries, link ])
+#. ([ pager.entries_on_this_page, pager.first, pager.last, pager.total_entries, link ])
+#: root/base/gallery/pager.tt:12
 msgid "Showing x (x-x) of x pictures in x"
 msgstr "Showing %1 (%2-%3) of %4 pictures in %5"
 
@@ -1363,7 +1372,7 @@ msgstr "サイト名"
 msgid "Site settings"
 msgstr "サイト設定"
 
-#: lib/MojoMojo/Controller/User.pm:448
+#: lib/MojoMojo/Controller/User.pm:451
 msgid "Some fields are invalid. Please correct them and try again:"
 msgstr ""
 
@@ -1459,7 +1468,7 @@ msgstr ""
 msgid "Textile2 complete reference"
 msgstr ""
 
-#: lib/MojoMojo/Controller/User.pm:362
+#: lib/MojoMojo/Controller/User.pm:365
 msgid "That mail is already in use"
 msgstr ""
 
@@ -1484,8 +1493,9 @@ msgstr ""
 msgid "The requested URL (x) was not found"
 msgstr "The requested URL (%1) was not found"
 
+#. ("$file.$suffix")
 #. ('<span class="error_detail">' . $c->stash->{pre_hacked_uri} . '</span>')
-#: lib/MojoMojo/Controller/Root.pm:49
+#: lib/MojoMojo/Controller/Image.pm:114 lib/MojoMojo/Controller/Root.pm:49
 msgid "The requested URL was not found: x"
 msgstr ""
 
@@ -1546,7 +1556,7 @@ msgid "User Settings"
 msgstr ""
 
 #. ($login)
-#: lib/MojoMojo/Controller/User.pm:122 lib/MojoMojo/Controller/User.pm:395 lib/MojoMojo/Controller/User.pm:424
+#: lib/MojoMojo/Controller/User.pm:122 lib/MojoMojo/Controller/User.pm:398 lib/MojoMojo/Controller/User.pm:427
 msgid "User not found: x"
 msgstr ""
 
@@ -1604,7 +1614,7 @@ msgid "We've sent you an email with an activation link. Please click on it to ac
 msgstr "アクティベーションリンクを記載したメールをお送りいたしました。メールに記載されたリンクをクリックして、アカウントを有効にしてください。"
 
 #. ($user->name)
-#: lib/MojoMojo/Controller/User.pm:341
+#: lib/MojoMojo/Controller/User.pm:344
 msgid "Welcome, x your email is validated. Please log in."
 msgstr "Welcome, %1 your email is validated. Please log in."
 
@@ -1645,7 +1655,7 @@ msgstr "このWikiの変更をRSS経由で購読する事が可能です。編�
 msgid "You do not have permissions to x attachments for this page"
 msgstr ""
 
-#: lib/MojoMojo/Controller/User.pm:442
+#: lib/MojoMojo/Controller/User.pm:445
 msgid "You have to fill in all required fields."
 msgstr ""
 
@@ -1709,7 +1719,7 @@ msgstr ""
 msgid "add tag"
 msgstr ""
 
-#: lib/MojoMojo/Schema.pm:160
+#: lib/MojoMojo/Schema.pm:165
 msgid "admin home page"
 msgstr ""
 "# Admin User.\n"
@@ -1758,7 +1768,7 @@ msgstr ""
 msgid "busy spinner"
 msgstr ""
 
-#: root/base/page/search_inline.tt:35 root/base/page/view.tt:42 root/base/tag/recent.tt:26
+#: root/base/page/search_inline.tt:35 root/base/page/view.tt:41 root/base/tag/recent.tt:26
 msgid "by"
 msgstr ""
 
@@ -1790,7 +1800,7 @@ msgstr ""
 msgid "common uses"
 msgstr ""
 
-#: lib/MojoMojo/Controller/User.pm:370
+#: lib/MojoMojo/Controller/User.pm:373
 msgid "confirmation message resent"
 msgstr ""
 
@@ -1830,11 +1840,15 @@ msgstr ""
 msgid "example"
 msgstr ""
 
-#: root/base/comment/post.tt:5 root/base/page/edit.tt:68
+#: lib/MojoMojo/Controller/Image.pm:37
+msgid "file not found."
+msgstr ""
+
+#: root/base/comment/post.tt:5 root/base/page/edit.tt:67
 msgid "forget me"
 msgstr "クッキー消去"
 
-#: root/base/gallery/photo.tt:1
+#: root/base/gallery/pager.tt:11 root/base/gallery/photo.tt:1
 msgid "gallery"
 msgstr "ギャラリー形式"
 
@@ -1842,7 +1856,7 @@ msgstr "ギャラリー形式"
 msgid "hello"
 msgstr ""
 
-#: lib/MojoMojo/Schema.pm:156
+#: lib/MojoMojo/Schema.pm:161
 msgid "help message"
 msgstr ""
 "# Help Index.\n"
@@ -2052,7 +2066,7 @@ msgstr ""
 msgid "tags"
 msgstr ""
 
-#: lib/MojoMojo/Controller/User.pm:443
+#: lib/MojoMojo/Controller/User.pm:446
 msgid "the following are missing:"
 msgstr ""
 
@@ -2060,7 +2074,7 @@ msgstr ""
 msgid "up to 6 levels of headers"
 msgstr ""
 
-#:
+#: root/base/page/permissions.tt:36
 msgid "view"
 msgstr "閲覧"
 
@@ -2073,7 +2087,7 @@ msgid "view in your browser"
 msgstr ""
 
 #. ("test")
-#: lib/MojoMojo/Schema.pm:152
+#: lib/MojoMojo/Schema.pm:157
 msgid "welcome message"
 msgstr ""
 "# MojoMojoへようこそ!\n"

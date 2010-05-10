@@ -6,7 +6,7 @@ use Carp qw/croak/;
 
 use parent qw/MojoMojo::Schema::Base::Result/;
 
-__PACKAGE__->load_components( "UTF8Columns", "Core");
+__PACKAGE__->load_components( "Core" );
 __PACKAGE__->table("page");
 __PACKAGE__->add_columns(
     "id",
@@ -29,7 +29,6 @@ __PACKAGE__->add_columns(
     { data_type => "INTEGER", is_nullable => 1, size => undef },
 );
 __PACKAGE__->set_primary_key("id");
-__PACKAGE__->utf8_columns("name", "name_orig");
 __PACKAGE__->add_unique_constraint( "page_unique_child_index", [ "parent", "name" ] );
 __PACKAGE__->has_many( "wantedpages", "MojoMojo::Schema::Result::WantedPage", { "foreign.from_page" => "self.id" } );
 __PACKAGE__->belongs_to( "parent", "MojoMojo::Schema::Result::Page", { id => "parent" } );
@@ -47,7 +46,7 @@ __PACKAGE__->has_many( "journals",       "MojoMojo::Schema::Result::Journal",   
 
 =head1 NAME
 
-MojoMojo::Schema::Result::Page
+MojoMojo::Schema::Result::Page - store pages
 
 =head1 METHODS
 

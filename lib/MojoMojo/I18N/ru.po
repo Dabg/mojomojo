@@ -15,6 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8    \n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. ($user->name)
+#: lib/MojoMojo/Controller/User.pm:310
+msgid ""
+"# Home node for x\n"
+"\n"
+"Put whatever you like here."
+msgstr ""
+
 #:
 msgid "(Private)"
 msgstr "(Личный)"
@@ -139,7 +147,7 @@ msgstr "Отсортированный в алфавитном порядке с
 msgid "Also try h2,h3 and so on"
 msgstr "Попробуйте также h2,h3 и так далее"
 
-#: lib/MojoMojo/Controller/User.pm:315
+#: lib/MojoMojo/Controller/User.pm:318
 msgid "An error occourred. Sorry."
 msgstr "Возникла ошибка. Извините."
 
@@ -720,7 +728,7 @@ msgstr "Заголовки"
 msgid "Headlines for x"
 msgstr "Заголовки для %1"
 
-#: lib/MojoMojo/Schema.pm:117
+#: lib/MojoMojo/Schema.pm:122
 msgid "Help"
 msgstr "Помощь"
 
@@ -874,7 +882,7 @@ msgstr "Далее в документе"
 msgid "Leave second blank if you do not want a password"
 msgstr "Оставьте второе поле незаполненным, если не хотите использовать пароль"
 
-#: root/base/page/edit.tt:73
+#: root/base/page/edit.tt:72
 msgid "Leave the second field blank if you do not want a password"
 msgstr ""
 
@@ -1078,7 +1086,7 @@ msgstr "У Вас нет разрешения на редактирование 
 msgid "No permissions to x this page"
 msgstr ""
 
-#: root/base/user/list.tt:14
+#: root/base/user/list.tt:13
 msgid "No recent changes"
 msgstr "Новых изменений нет"
 
@@ -1217,7 +1225,8 @@ msgstr "Пароль не совпадает"
 msgid "Password must be between 4 and 14 chars"
 msgstr "Пароль должен содержать от 4 до 14 символов"
 
-#:
+#. ($c->stash->{page}->name)
+#: lib/MojoMojo.pm:674
 msgid "Permission Denied to view x"
 msgstr "Запрещено просматривать %1"
 
@@ -1432,11 +1441,11 @@ msgstr "Результаты %1-%2 of %3 найдены на %4"
 
 #. ([content.created.ymd, content.created.hms, content.creator.name])
 #. ([ content.created.ymd, content.created.hms, content.creator.name ])
-#: root/base/page/print.tt:13 root/base/page/view.tt:41
+#: root/base/page/print.tt:13 root/base/page/view.tt:40
 msgid "Revised on x at x by x"
 msgstr "Пересмотрено %1 в %2 %3"
 
-#: root/base/page/print.tt:7 root/base/page/view.tt:15 root/base/page/view.tt:41
+#: root/base/page/print.tt:7 root/base/page/view.tt:15 root/base/page/view.tt:40
 msgid "Revision"
 msgstr "Версия"
 
@@ -1565,9 +1574,9 @@ msgstr "Показ изменений от предыдущей версии"
 msgid "Showing entries x-x of x in x"
 msgstr "Показ пунктов %1-%2 из %3 в %4"
 
-#. ([pager.entries_on_this_page,pager.first,pager.last,pager.total_entries,c.wikiword(page.path,base)
-#. ([ pager.entries_on_this_page, pager.first, pager.last, pager.total_entries, c.wikiword(page.path, base) ])
-#: root/base/gallery/pager.tt:11
+#. ([pager.entries_on_this_page,pager.first,pager.last,pager.total_entries, link ])
+#. ([ pager.entries_on_this_page, pager.first, pager.last, pager.total_entries, link ])
+#: root/base/gallery/pager.tt:12
 msgid "Showing x (x-x) of x pictures in x"
 msgstr "Показ %1 (%2-%3) из %4 картинок в %5"
 
@@ -1595,7 +1604,7 @@ msgstr "Найстройки сайта"
 msgid "Smaller"
 msgstr "Меньше"
 
-#: lib/MojoMojo/Controller/User.pm:448
+#: lib/MojoMojo/Controller/User.pm:451
 msgid "Some fields are invalid. Please correct them and try again:"
 msgstr "Некоторые поля неверно заполнены. Исправьте и попробуйте снова:"
 
@@ -1715,7 +1724,7 @@ msgstr ""
 msgid "Textile2 reference"
 msgstr "Справочник по Textile2"
 
-#: lib/MojoMojo/Controller/User.pm:362
+#: lib/MojoMojo/Controller/User.pm:365
 msgid "That mail is already in use"
 msgstr "Этот почтовый ящик уже используется"
 
@@ -1744,8 +1753,9 @@ msgstr ""
 msgid "The requested URL (x) was not found"
 msgstr "Запрошенный URL (%1) не был найден"
 
+#. ("$file.$suffix")
 #. ('<span class="error_detail">' . $c->stash->{pre_hacked_uri} . '</span>')
-#: lib/MojoMojo/Controller/Root.pm:49
+#: lib/MojoMojo/Controller/Image.pm:114 lib/MojoMojo/Controller/Root.pm:49
 msgid "The requested URL was not found: x"
 msgstr "Запрошенный URL не был найден: %1"
 
@@ -1830,7 +1840,7 @@ msgid "User not found!"
 msgstr "Пользователь не найден!"
 
 #. ($login)
-#: lib/MojoMojo/Controller/User.pm:122 lib/MojoMojo/Controller/User.pm:395 lib/MojoMojo/Controller/User.pm:424
+#: lib/MojoMojo/Controller/User.pm:122 lib/MojoMojo/Controller/User.pm:398 lib/MojoMojo/Controller/User.pm:427
 msgid "User not found: x"
 msgstr "Пользователь не найден: %1"
 
@@ -1888,7 +1898,7 @@ msgid "We've sent you an email with an activation link. Please click on it to ac
 msgstr "Мы выслали Вам письмо с ссылкой активации. Кликните на ней для активации Вашей учетной записи!"
 
 #. ($user->name)
-#: lib/MojoMojo/Controller/User.pm:341
+#: lib/MojoMojo/Controller/User.pm:344
 msgid "Welcome, x your email is validated. Please log in."
 msgstr "Добро пожаловать, %1 ваш почтовый адрес подтвержден. Войдите."
 
@@ -1941,7 +1951,7 @@ msgstr "У вас нет полномочий на редактирование 
 msgid "You do not have permissions to x attachments for this page"
 msgstr ""
 
-#: lib/MojoMojo/Controller/User.pm:442
+#: lib/MojoMojo/Controller/User.pm:445
 msgid "You have to fill in all required fields."
 msgstr "Вы должны заполнить все обязательные поля."
 
@@ -2005,7 +2015,7 @@ msgstr "добавить комментарий"
 msgid "add tag"
 msgstr "добавить тег"
 
-#: lib/MojoMojo/Schema.pm:160
+#: lib/MojoMojo/Schema.pm:165
 msgid "admin home page"
 msgstr ""
 "# Администратор.\n"
@@ -2066,7 +2076,7 @@ msgstr "жирный"
 msgid "busy spinner"
 msgstr ""
 
-#: root/base/page/search_inline.tt:35 root/base/page/view.tt:42 root/base/tag/recent.tt:26
+#: root/base/page/search_inline.tt:35 root/base/page/view.tt:41 root/base/tag/recent.tt:26
 msgid "by"
 msgstr " "
 
@@ -2106,7 +2116,7 @@ msgstr "общее использование"
 msgid "configuration"
 msgstr "конфигурация"
 
-#: lib/MojoMojo/Controller/User.pm:370
+#: lib/MojoMojo/Controller/User.pm:373
 msgid "confirmation message resent"
 msgstr "отправка сообщения подтверждена"
 
@@ -2154,11 +2164,15 @@ msgstr "весь сайт"
 msgid "example"
 msgstr "пример"
 
-#: root/base/comment/post.tt:5 root/base/page/edit.tt:68
+#: lib/MojoMojo/Controller/Image.pm:37
+msgid "file not found."
+msgstr ""
+
+#: root/base/comment/post.tt:5 root/base/page/edit.tt:67
 msgid "forget me"
 msgstr "забыть меня"
 
-#: root/base/gallery/photo.tt:1
+#: root/base/gallery/pager.tt:11 root/base/gallery/photo.tt:1
 msgid "gallery"
 msgstr "галерея"
 
@@ -2166,7 +2180,7 @@ msgstr "галерея"
 msgid "hello"
 msgstr "привет"
 
-#: lib/MojoMojo/Schema.pm:156
+#: lib/MojoMojo/Schema.pm:161
 msgid "help message"
 msgstr ""
 "# Индекс помощи.\n"
@@ -2424,7 +2438,7 @@ msgstr "содержание"
 msgid "tags"
 msgstr "теги"
 
-#: lib/MojoMojo/Controller/User.pm:443
+#: lib/MojoMojo/Controller/User.pm:446
 msgid "the following are missing:"
 msgstr "отсутствует следующее:"
 
@@ -2440,7 +2454,7 @@ msgstr "адрес в скобках"
 msgid "users"
 msgstr "пользователи"
 
-#:
+#: root/base/page/permissions.tt:36
 msgid "view"
 msgstr "просмотр"
 
@@ -2453,7 +2467,7 @@ msgid "view in your browser"
 msgstr ""
 
 #. ("test")
-#: lib/MojoMojo/Schema.pm:152
+#: lib/MojoMojo/Schema.pm:157
 msgid "welcome message"
 msgstr ""
 "# Добро пожаловать в MojoMojo!\n"
