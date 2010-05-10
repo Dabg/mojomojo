@@ -6,7 +6,7 @@ use warnings;
 use parent qw/MojoMojo::Schema::Base::Result/;
 use Carp qw/croak/;
 
-__PACKAGE__->load_components( "UTF8Columns", "Core" );
+__PACKAGE__->load_components( "Core" );
 __PACKAGE__->table("tag");
 __PACKAGE__->add_columns(
     "id",
@@ -24,12 +24,10 @@ __PACKAGE__->set_primary_key("id");
 __PACKAGE__->belongs_to( "person", "MojoMojo::Schema::Result::Person", { id => "person" } );
 __PACKAGE__->belongs_to( "page",   "MojoMojo::Schema::Result::Page",   { id => "page" } );
 __PACKAGE__->belongs_to( "photo",  "MojoMojo::Schema::Result::Photo",  { id => "photo" } );
-__PACKAGE__->utf8_columns(qw/tag/);
-
 
 =head1 NAME
 
-MojoMojo::Schema::Result::Tag
+MojoMojo::Schema::Result::Tag - store page tags
 
 =head1 METHODS
 

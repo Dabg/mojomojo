@@ -33,8 +33,7 @@ use Algorithm::Merge qw/merge/;
 use MojoMojo::WordDiff;
 use HTML::Entities qw/encode_entities_numeric/;
 
-__PACKAGE__->load_components(
-    qw/DateTime::Epoch TimeStamp UTF8Columns Core/);
+__PACKAGE__->load_components(qw/DateTime::Epoch TimeStamp Core/);
 __PACKAGE__->table("content");
 __PACKAGE__->add_columns(
     "page",
@@ -83,7 +82,6 @@ __PACKAGE__->add_columns(
     { data_type => "TEXT", is_nullable => 1, size => undef },
 
 );
-__PACKAGE__->utf8_columns(qw/abstract body precompiled/);
 __PACKAGE__->set_primary_key( "version", "page" );
 __PACKAGE__->has_many(
     "pages",
@@ -109,17 +107,8 @@ __PACKAGE__->has_many(
         "foreign.page"                 => "self.page",
     },
 );
-__PACKAGE__->belongs_to(
-    "creator",
-    "MojoMojo::Schema::Result::Person",
-    { id => "creator" }
-);
-__PACKAGE__->belongs_to(
-    "page",
-    "MojoMojo::Schema::Result::Page",
-    { id => "page" }
-);
-
+__PACKAGE__->belongs_to( "creator", "MojoMojo::Schema::Result::Person", { id => "creator" } );
+__PACKAGE__->belongs_to( "page",    "MojoMojo::Schema::Result::Page",   { id => "page" } );
 
 =head1 COLUMNS
 
@@ -152,8 +141,8 @@ sub highlight {
         : $this_content
     );
 
-    my $this = [ split /\n/, $this_content ];
-    my $prev = [ split /\n/, $previous_content ];
+    my $this = [ split /\n/,                  $this_content ];
+    my $prev = [ split /\n/,                  $previous_content ];
     my @diff = Algorithm::Diff::sdiff( $prev, $this );
     my $diff;
     my $hi           = 0;
@@ -169,7 +158,7 @@ sub highlight {
             $diff .= qq(<$tag id="hi$hi" class="fade">) . $$line[2] . "</$tag>";
         }
         elsif ( $$line[0] eq "-" ) { }
-        else                       { $diff .= $$line[1] }
+        else { $diff .= $$line[1] }
         $diff .= "\n";
         $pre_tag_open = 0 if $$line[2] =~ qr{</pre>} and $$line[2] !~ qr{<pre>};
     }
@@ -188,17 +177,13 @@ sub formatted_diff {
     my ( $self, $c, $to, $sparse ) = @_;
     my $this = [
         $sparse
-        ? split /\n/,
-        ( $self->encoded_body )
-        : split /\n\n/,
-        ( $self->formatted($c) )
+        ? split /\n/, ( $self->encoded_body )
+        : split /\n\n/, ( $self->formatted($c) )
     ];
     my $prev = [
         $sparse
-        ? split /\n/,
-        ( $to->encoded_body )
-        : split /\n\n/,
-        ( $to->formatted($c) )
+        ? split /\n/, ( $to->encoded_body )
+        : split /\n\n/, ( $to->formatted($c) )
     ];
     my @diff = Algorithm::Diff::sdiff( $prev, $this );
     my $diff;
@@ -219,7 +204,7 @@ sub formatted_diff {
                   . qq(<div class="diffins">)
                   . $$line[2]
                   . "</div>"
-                : word_diff($$line[1], $$line[2])
+                : word_diff( $$line[1], $$line[2] )
             );
         }
         elsif ( $$line[0] eq "u" ) {
@@ -238,8 +223,7 @@ Return the content after being run through MojoMojo::Formatter::*.
 
 sub formatted {
     my ( $self, $c ) = @_;
-    my $result =
-      $self->result_source->resultset->format_content( $c, $self->body, $self );
+    my $result = $self->result_source->resultset->format_content( $c, $self->body, $self );
     return $result;
 }
 
@@ -329,17 +313,18 @@ sub store_links {
     $page->links_from->delete();
     $page->wantedpages->delete();
     require MojoMojo::Formatter::Wiki;
-    my ( $linked_pages, $wanted_pages ) =
-      MojoMojo::Formatter::Wiki->find_links( \$content, $page );
+    my ( $linked_pages, $wanted_pages ) = MojoMojo::Formatter::Wiki->find_links( \$content, $page );
     return unless ( @$linked_pages || @$wanted_pages );
 
     for (@$linked_pages) {
         my $link =
           $self->result_source->schema->resultset('Link')
-          ->find_or_create(
-            { from_page => $self->page->id, to_page => $_->id } );
+          ->find_or_create( { from_page => $self->page->id, to_page => $_->id } );
     }
     for (@$wanted_pages) {
+        $_->{path} = join( '/',
+            map { ( $self->result_source->schema->resultset('Page')->normalize_name($_) )[1]; }
+              split( m|/|, $_->{path} ) );
         my $wanted_page =
           $self->result_source->schema()->resultset('WantedPage')
           ->find_or_create( { from_page => $page->id, to_path => $_->{path} } );

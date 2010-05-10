@@ -14,7 +14,7 @@ my $textile = Text::Textile->new(
 );
 
 __PACKAGE__->load_components(
-    qw/DateTime::Epoch TimeStamp UTF8Columns Core/);
+    qw/DateTime::Epoch TimeStamp Core/);
 __PACKAGE__->table("comment");
 __PACKAGE__->add_columns(
     "id",
@@ -57,11 +57,10 @@ __PACKAGE__->belongs_to(
     "MojoMojo::Schema::Result::Photo",
     { id => "picture" }
 );
-__PACKAGE__->utf8_columns(qw/body/);
 
 =head1 NAME
 
-MojoMojo::Schema::Result::Comment
+MojoMojo::Schema::Result::Comment - store comments
 
 =head1 METHODS
 

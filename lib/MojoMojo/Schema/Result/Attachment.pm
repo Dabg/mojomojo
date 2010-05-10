@@ -8,7 +8,7 @@ use parent qw/MojoMojo::Schema::Base::Result/;
 use Number::Format qw( format_bytes );
 
 __PACKAGE__->load_components(
-    qw/DateTime::Epoch TimeStamp UTF8Columns Core/);
+    qw/DateTime::Epoch TimeStamp Core/);
 __PACKAGE__->table("attachment");
 __PACKAGE__->add_columns(
     "id",
@@ -42,11 +42,10 @@ __PACKAGE__->belongs_to(
     { id => "page" }
 );
 __PACKAGE__->might_have( "photo", "MojoMojo::Schema::Result::Photo" );
-__PACKAGE__->utf8_columns(qw/name/);
 
 =head1 NAME
 
-MojoMojo::Schema::Result::Attachment
+MojoMojo::Schema::Result::Attachment - store attachments
 
 =head1 METHODS
 

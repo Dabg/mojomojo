@@ -30,7 +30,8 @@ use Module::Pluggable::Ordered
     except      => qr/^MojoMojo::Plugin::/,
     require     => 1;
 
-our $VERSION = '0.999042';
+our $VERSION = '1.00';
+use 5.008004;
 
 MojoMojo->config->{authentication}{dbic} = {
     user_class     => 'DBIC::Person',
@@ -725,10 +726,10 @@ Jonathan Rockway C<jrockway@jrockway.us>
 A number of other contributors over the years:
 https://www.ohloh.net/p/mojomojo/contributors
 
-
 =head1 COPYRIGHT
 
-Copyright 2005-2009, Marcus Ramberg
+Unless explicitly stated otherwise, all modules and scripts in this distribution are:
+Copyright 2005-2010, Marcus Ramberg
 
 =head1 LICENSE
 
