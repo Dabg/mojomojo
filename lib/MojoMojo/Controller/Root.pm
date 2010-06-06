@@ -6,7 +6,7 @@ __PACKAGE__->config->{namespace} = '';
 
 =head1 NAME
 
-MojoMojo::Controller::Root
+MojoMojo::Controller::Root - Controller to run before all others
 
 =head1 ACTIONS
 
@@ -123,6 +123,12 @@ sub auto : Private {
     return 1 if $c->req->action eq 'logout';
     $c->stash->{template} = 'user/validate.tt';
 }
+
+=head2 exit
+
+A way to exit from MojoMojo.  Useful when testing leaks.
+
+=cut
 
 sub exit : Local {
     my ($self, $c) = @_;

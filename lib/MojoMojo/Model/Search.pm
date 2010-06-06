@@ -19,7 +19,7 @@ __PACKAGE__->config->{index_dir} ||= MojoMojo->path_to('/index');
 
 =head1 NAME
 
-MojoMojo::Model::Search
+MojoMojo::Model::Search - support for searching pages
 
 =head1 METHODS
 
@@ -27,6 +27,12 @@ MojoMojo::Model::Search
 
 my $invindexer;
 my $analyzer = KinoSearch::Analysis::PolyAnalyzer->new( language => _get_language() );
+
+=head2 indexer
+
+Index the search data
+
+=cut
 
 sub indexer {
     my $self       = shift;
@@ -43,6 +49,12 @@ sub indexer {
     $invindexer->spec_field( name => 'tags' );
     return $invindexer;
 }
+
+=head2 searcher
+
+Used by search() to do the grunt work.
+
+=cut
 
 sub searcher {
     my $self = shift;
@@ -114,6 +126,12 @@ sub index_page {
     $index->add_doc($doc);
     $index->finish( optimize => 1 );
 }
+
+=head2 search
+
+Search for a term or phrase.
+
+=cut
 
 sub search {
     my ( $self, $q ) = @_;

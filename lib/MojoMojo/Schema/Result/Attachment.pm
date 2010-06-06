@@ -8,7 +8,7 @@ use parent qw/MojoMojo::Schema::Base::Result/;
 use Number::Format qw( format_bytes );
 
 __PACKAGE__->load_components(
-    qw/DateTime::Epoch TimeStamp UTF8Columns Core/);
+    qw/DateTime::Epoch TimeStamp Core/);
 __PACKAGE__->table("attachment");
 __PACKAGE__->add_columns(
     "id",
@@ -42,11 +42,10 @@ __PACKAGE__->belongs_to(
     { id => "page" }
 );
 __PACKAGE__->might_have( "photo", "MojoMojo::Schema::Result::Photo" );
-__PACKAGE__->utf8_columns(qw/name/);
 
 =head1 NAME
 
-MojoMojo::Schema::Result::Attachment
+MojoMojo::Schema::Result::Attachment - store attachments
 
 =head1 METHODS
 
@@ -79,9 +78,27 @@ sub filename {
     return ( $attachment_dir . '/' . $self->id );
 }
 
+=head2 inline_filename
+
+Name of attachment file when displayed inline.
+
+=cut
+
 sub inline_filename { shift->filename . '.inline'; }
 
+=head2 thumb_filename
+
+Nmae of thumbnail of attachment.
+
+=cut
+
 sub thumb_filename { shift->filename . '.thumb'; }
+
+=head2 make_photo
+
+Insert photo id and title into photo table.
+
+=cut
 
 sub make_photo {
     my $self  = shift;
@@ -96,17 +113,35 @@ sub make_photo {
     $photo->insert();
 }
 
+=head2 is_image
+
+Predicate to indicate is the contenttype is image or not.
+
+=cut
+
 sub is_image {
     my $self = shift;
 
     return $self->contenttype =~ m{^image/};
 }
 
+=head2 is_text
+
+Predicate to indicate is the contenttype is text or not.
+
+=cut
+
 sub is_text {
     my $self = shift;
 
     return $self->contenttype =~ m{^text/};
 }
+
+=head2 human_size
+
+Get a human readable size.
+
+=cut
 
 sub human_size {
     my $self = shift;
@@ -137,6 +172,12 @@ my %mime_type_to_description = (
     'image/jpeg' => 'JPEG image',
     'image/png'  => 'PNG image',
 );
+
+=head2 human_type
+
+Describe the mime type (in English?).
+
+=cut
 
 sub human_type {
     my $self = shift;

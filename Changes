@@ -1,19 +1,46 @@
-  WARNING: there are some issues with the Defang formatter, which will
-    corrupt certain kinds of markup. The simple fix is to remove
-    lib/MojoMojo/Formatter/Defang.pm, but that may open the door to
-    XSS attacks. Please see for details
-    http://n2.nabble.com/Defang-issues-td4078508.html
+
+  Bug fixes: 
+  - Fix tagged descendants by date for postgresql
+
+1.01 2010-05-26 10:04:20
+  New features:
+  - Google search formatter (bayashi)
+  - Utility scripts to import/export raw page markup from file/to STDOUT (dandv)
+  - Add wikipedia link generator. (bayashi)
+
+  Bug fixes: 
+  - Minor CSS fix (tcaine)
+  - default uri_for_static to use uri_for to make it work correctly for non-root-mounted wikis.
+  - Restrict page deletion to admin users only
+  
+  Improvements:
+  - All Methods/subs now documented
+  - POD Coverage test on by default
+
+1.00 2010-05-09 00:04:20
 
   New Features:
   - Create a default page for new users.
-  - Replaced creepy shrunken-head image with a sane "Stop" sign (dandv)
+  - Replaced shrunken-head image with a "Stop" sign (dandv)
   
   Bug fixes:
+  - Fix WantedLink to use normalize_page to match links
   - Removed File::Slurp dependency after removing it from Text::(Multi)Markdown
     because it fails installation under Strawberry Perl  (dandv)
   - IRC Formatter auto-color nicknames (GitHub issue #27) (linio) 
   - Attachments size in Page info is now correctly displayed (GitHub issue #53) (linio)
   - Remove 'Alerts' from Syntax Highlight list - it's Kate's hidden module (Github issue #52) (linio)
+  - Fixed formatter_all_textile tests to work without Syntax plugin
+  
+  Improvements:
+  - Refine POD so lintian is happy (debian build tool)
+  - Add unicode code option to DB connect string.  This allows us to remove
+    the use of UTF8Columns which is deprecated.  Hook in CHARTSET=utf8 for MySQL deploy
+  
+  Misc:
+  - Test::Notabs is now optional
+  - HTML::Toc is now required
+  
 
 0.999042 2009-12-01 21:42:00
 
